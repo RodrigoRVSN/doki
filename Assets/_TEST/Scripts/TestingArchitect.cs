@@ -8,6 +8,7 @@ namespace TESTING
     {
         DialogueSystem ds;
         TextArchitect architect;
+        public TextArchitect.BuildMethod bm = TextArchitect.BuildMethod.instant;
 
         string[] lines = new string[5]
         {
@@ -18,17 +19,26 @@ namespace TESTING
             "Yes, this is only a test.",
         };
 
-        // Start is called before the first frame update
         void Start()
         {
             ds = DialogueSystem.instance;
             architect = new TextArchitect(ds.dialogueContainer.dialogueText);
-            architect.buildMethod = TextArchitect.BuildMethod.typewriter;
+            architect.buildMethod = TextArchitect.BuildMethod.fade;
         }
 
-        // Update is called once per frame
         void Update()
         {
+            if (bm != architect.buildMethod)
+            {
+                architect.buildMethod = bm;
+                architect.Stop();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                architect.Stop();
+            }
+
             string longLine = "This is a test of the emergency broadcast system. This is only a test. Yes, this is only a test okay. A very ang big long good line to be very long.";
 
             if(Input.GetKeyDown(KeyCode.Space))
