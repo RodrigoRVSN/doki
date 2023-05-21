@@ -1,0 +1,8 @@
+John "Comi o cu de quem ta lendo" list(items -f long), playSong("Intro Song" -v 1)
+
+setScene("Classroom" -s 5.5)
+
+World "o buceta \"grande\" e peluda"
+
+narrator "And end!" PlaySong(End, -p 0.5, list(players), saveGame(1 -g all -f simple)
+
